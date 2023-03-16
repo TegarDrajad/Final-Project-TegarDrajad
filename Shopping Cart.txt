@@ -1,0 +1,39 @@
+PROGRAM Shopping Cart Sederhana by
+#Tegar Drajad Syah Vadiga
+#FE5667736
+
+READ AND WRITE "quantity" with number
+READ AND WRITE "shopping_cart" with array
+READ AND WRITE "total_price" with number
+READ AND WRITE "open_shopping_cart" with bool
+
+shopping_cart = []
+
+//lopping until user choose to checkout
+WHILE open_shopping_cart = true :
+  //display products
+  DO 
+    display_products()
+
+  //ask user to select a product
+    selected_product = get_user_selection()
+
+  //ask user to enter quantity
+    quantity = get_quantity()
+
+  //calculate total price for selected product and quantity
+    total_price = selected_product.price * quantity
+
+  //add selected product and quantity on shopping cart
+    shopping_cart.append({product: selected_product.name,quantity: quantity, price: total_price})
+
+  //ask user if they want to continue shopping or checkout
+    continue_shopping = ask_continue_shopping()
+
+  //if condiiton user choses to checkout, display shopping cart and total price
+  IF continue_shopping:
+    DISPLAY shopping_cart(shopping_cart)
+    DISPLAY total_price(shopping_cart)
+  ELSE
+    DISPLAY display_products()
+END WHILE
